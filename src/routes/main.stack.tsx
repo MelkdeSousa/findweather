@@ -1,10 +1,10 @@
 import { NavigationProp } from '@react-navigation/native'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
-import HomeScreen from '@screens/Home'
 import WelcomeScreen from '@screens/Welcome'
+import MainTab, { MainTabScreenParams } from './main.tab'
 
 export type MainStackParamList = {
-  Home: undefined
+  Tab: MainTabScreenParams
   Welcome: undefined
 }
 
@@ -20,7 +20,7 @@ const MainStack = () => {
       }}
     >
       <Stack.Screen name="Welcome" component={WelcomeScreen} />
-      <Stack.Screen name="Home" component={HomeScreen} />
+      <Stack.Screen name="Tab" component={MainTab} />
     </Stack.Navigator>
   )
 }

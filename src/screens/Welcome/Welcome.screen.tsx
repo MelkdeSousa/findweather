@@ -9,7 +9,10 @@ import { MainStackNavigationProps } from '@routes/main.stack'
 const WelcomeScreen = () => {
   const navigation = useNavigation<MainStackNavigationProps>()
 
-  const navigateToHome = () => navigation.navigate('Home')
+  const navigateToHome = () =>
+    navigation.navigate('Tab', {
+      screen: 'Home',
+    })
 
   return (
     <S.Container>
