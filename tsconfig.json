@@ -23,6 +23,12 @@
       "@assets/*": [
         "src/assets/*"
       ],
+      "@routes/*": [
+        "src/routes/*"
+      ],
+      "@routes": [
+        "src/routes/index.ts"
+      ],
     }
   },
   "extends": "expo/tsconfig.base",

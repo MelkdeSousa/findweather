@@ -1,3 +1,3 @@
-import WelcomePage from './Welcome.screen'
+import WelcomeScreen from './Welcome.screen'
 
-export default WelcomePage
+export default WelcomeScreen

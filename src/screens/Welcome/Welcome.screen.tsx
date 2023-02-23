@@ -4,7 +4,7 @@ import S from './styles'
 
 import CloudAndThunderImg from '@assets/cloud-and-thunder.png'
 
-const WelcomePage = () => {
+const WelcomeScreen = () => {
   return (
     <S.Container>
       <S.ContainerImage>
@@ -20,7 +20,7 @@ const WelcomePage = () => {
           color: '$white',
           textAlign: 'center',
           width: 300,
-          alignSelf: 'center',
+          alignSelf: 'center'
         }}
       >
         Descubra o Clima na sua Cidade
@@ -33,7 +33,7 @@ const WelcomePage = () => {
           fontFamily: '$overpassRegular',
           fontSize: '$md',
           color: '$gray100',
-          textAlign: 'center',
+          textAlign: 'center'
         }}
       >
         Com o Find
@@ -41,7 +41,7 @@ const WelcomePage = () => {
           css={{
             fontFamily: '$overpassBold',
             fontSize: '$md',
-            color: '$gray100',
+            color: '$gray100'
           }}
         >
           Weather
@@ -62,7 +62,7 @@ const WelcomePage = () => {
           height: 54,
           width: '100%',
           justifyContent: 'center',
-          alignItems: 'center',
+          alignItems: 'center'
         }}
       >
         <Text
@@ -70,7 +70,7 @@ const WelcomePage = () => {
             fontFamily: '$OverpassRegular',
             fontSize: '$md',
             color: '$white',
-            textAlign: 'center',
+            textAlign: 'center'
           }}
         >
           Iniciar
@@ -82,4 +82,4 @@ const WelcomePage = () => {
   )
 }
 
-export default WelcomePage
+export default WelcomeScreen

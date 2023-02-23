@@ -5,7 +5,9 @@ import {
   Overpass_700Bold as overpassBold,
   useFonts
 } from '@expo-google-fonts/overpass'
-import { WelcomePage } from '@screens'
+import { NavigationContainer } from '@react-navigation/native'
+import { MainStack } from '@routes'
+import { StatusBar } from 'expo-status-bar'
 import { SafeAreaProvider } from 'react-native-safe-area-context'
 import { ScreenProvider } from 'responsive-native'
 
@@ -14,7 +16,7 @@ export default function App() {
     overpassLight,
     overpassRegular,
     overpassSemiBold,
-    overpassBold,
+    overpassBold
   })
 
   if (!fontsLoaded) {
@@ -22,10 +24,13 @@ export default function App() {
   }
 
   return (
-    <SafeAreaProvider>
-      <ScreenProvider baseFontSize={16}>
-        <WelcomePage />
-      </ScreenProvider>
-    </SafeAreaProvider>
+    <NavigationContainer>
+      <SafeAreaProvider>
+        <StatusBar translucent style="inverted" />
+        <ScreenProvider baseFontSize={16}>
+          <MainStack />
+        </ScreenProvider>
+      </SafeAreaProvider>
+    </NavigationContainer>
   )
 }
