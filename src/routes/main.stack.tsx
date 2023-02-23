@@ -1,13 +1,16 @@
+import { NavigationProp } from '@react-navigation/native'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import HomeScreen from '@screens/Home'
 import WelcomeScreen from '@screens/Welcome'
 
-export type MainStackRoutes = {
+export type MainStackParamList = {
   Home: undefined
   Welcome: undefined
 }
 
-const Stack = createNativeStackNavigator<MainStackRoutes>()
+export type MainStackNavigationProps = NavigationProp<MainStackParamList>
+
+const Stack = createNativeStackNavigator<MainStackParamList>()
 
 const MainStack = () => {
   return (

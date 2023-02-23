@@ -3,8 +3,14 @@ import { Image } from 'react-native'
 import S from './styles'
 
 import CloudAndThunderImg from '@assets/cloud-and-thunder.png'
+import { useNavigation } from '@react-navigation/native'
+import { MainStackNavigationProps } from '@routes/main.stack'
 
 const WelcomeScreen = () => {
+  const navigation = useNavigation<MainStackNavigationProps>()
+
+  const navigateToHome = () => navigation.navigate('Home')
+
   return (
     <S.Container>
       <S.ContainerImage>
@@ -20,7 +26,7 @@ const WelcomeScreen = () => {
           color: '$white',
           textAlign: 'center',
           width: 300,
-          alignSelf: 'center'
+          alignSelf: 'center',
         }}
       >
         Descubra o Clima na sua Cidade
@@ -33,7 +39,7 @@ const WelcomeScreen = () => {
           fontFamily: '$overpassRegular',
           fontSize: '$md',
           color: '$gray100',
-          textAlign: 'center'
+          textAlign: 'center',
         }}
       >
         Com o Find
@@ -41,7 +47,7 @@ const WelcomeScreen = () => {
           css={{
             fontFamily: '$overpassBold',
             fontSize: '$md',
-            color: '$gray100'
+            color: '$gray100',
           }}
         >
           Weather
@@ -62,15 +68,16 @@ const WelcomeScreen = () => {
           height: 54,
           width: '100%',
           justifyContent: 'center',
-          alignItems: 'center'
+          alignItems: 'center',
         }}
+        onPress={navigateToHome}
       >
         <Text
           css={{
             fontFamily: '$OverpassRegular',
             fontSize: '$md',
             color: '$white',
-            textAlign: 'center'
+            textAlign: 'center',
           }}
         >
           Iniciar
