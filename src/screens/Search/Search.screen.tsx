@@ -1,19 +1,17 @@
-import { Text } from '@components/Text'
+import { Header } from '@components'
+import { MainTabNavigationProps } from '@routes/main.tab'
 import S from './styles'
 
-const SearchScreen = () => {
+export type SearchScreenProps = {
+  navigation: MainTabNavigationProps
+}
+
+const SearchScreen = ({ navigation }: SearchScreenProps) => {
+  const navigateToHome = () => navigation.navigate('Home')
+
   return (
     <S.Container>
-      <Text
-        css={{
-          fontFamily: '$overpassRegular',
-          fontSize: '$xxxl',
-          color: '$white',
-          textAlign: 'center',
-        }}
-      >
-        Search Screen
-      </Text>
+      <Header title="Buscar" onBack={navigateToHome} />
     </S.Container>
   )
 }
