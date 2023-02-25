@@ -2,6 +2,7 @@ import { Text } from '@components/Text'
 import { AntDesign as Icon } from '@expo/vector-icons'
 import { useTheme } from '@styles'
 import { Platform, View } from 'react-native'
+import { Divider } from '../Divider'
 import S from './styles'
 
 export type HeaderProps = {
@@ -35,6 +36,8 @@ const Header = ({ title, onBack }: HeaderProps) => {
           {title}
         </Text>
       </View>
+
+      <Divider bottom={128} />
     </S.Container>
   )
 }

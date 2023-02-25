@@ -3,12 +3,13 @@ import { Image } from 'react-native'
 import S from './styles'
 
 import CloudAndThunderImg from '@assets/cloud-and-thunder.png'
-import { useNavigation } from '@react-navigation/native'
 import { MainStackNavigationProps } from '@routes/main.stack'
 
-const WelcomeScreen = () => {
-  const navigation = useNavigation<MainStackNavigationProps>()
+export type WelcomeScreenProps = {
+  navigation: MainStackNavigationProps
+}
 
+const WelcomeScreen = ({ navigation }: WelcomeScreenProps) => {
   const navigateToHome = () =>
     navigation.navigate('Tab', {
       screen: 'Home',
@@ -77,7 +78,7 @@ const WelcomeScreen = () => {
       >
         <Text
           css={{
-            fontFamily: '$OverpassRegular',
+            fontFamily: '$overpassRegular',
             fontSize: '$md',
             color: '$white',
             textAlign: 'center',

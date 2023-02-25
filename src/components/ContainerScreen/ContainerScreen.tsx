@@ -4,5 +4,5 @@ export default styled('SafeAreaView', {
   backgroundColor: '$dark',
   flex: 1,
   justifyContent: 'center',
-  paddingHorizontal: '$xl',
+  paddingHorizontal: '$lg',
 })
