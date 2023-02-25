@@ -3,11 +3,13 @@ import {
   Overpass_400Regular as overpassRegular,
   Overpass_600SemiBold as overpassSemiBold,
   Overpass_700Bold as overpassBold,
-  useFonts
+  useFonts,
 } from '@expo-google-fonts/overpass'
 import { NavigationContainer } from '@react-navigation/native'
 import { MainStack } from '@routes'
 import { StatusBar } from 'expo-status-bar'
+import 'intl'
+import 'intl/locale-data/jsonp/pt-BR'
 import { SafeAreaProvider } from 'react-native-safe-area-context'
 import { ScreenProvider } from 'responsive-native'
 
@@ -16,7 +18,7 @@ export default function App() {
     overpassLight,
     overpassRegular,
     overpassSemiBold,
-    overpassBold
+    overpassBold,
   })
 
   if (!fontsLoaded) {

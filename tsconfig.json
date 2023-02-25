@@ -65,7 +65,11 @@
       "@types": [
         "src/@types/index.d.ts"
       ],
-    }
+    },
+    "typeRoots": [
+      "node_modules/@types",
+      "src/@types"
+    ]
   },
   "extends": "expo/tsconfig.base",
 }

@@ -13,3 +13,14 @@ export const getForecast = async (city: string): Promise<Forecast> => {
 
   return mapForecastWeatherToForecast(data)
 }
+
+export const getForecastRaw = async (city: string): Promise<any> => {
+  const response = await fetch(
+    // eslint-disable-next-line prettier/prettier
+    `${WEATHER_URL}/forecast.json?key=${env.API_KEY_WEATHER_API}&q=${city}&days=7&aqi=no&alerts=no&lang=pt`
+  )
+
+  const data = await response.json()
+
+  return data
+}

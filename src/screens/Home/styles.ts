@@ -23,9 +23,15 @@ const Body = styled('View', {
   justifyContent: 'space-between',
 })
 
+const Image = styled('View', {
+  height: 170,
+  alignSelf: 'center',
+})
+
 export default {
   Container,
   ContainerImage,
   Header,
   Body,
+  Image,
 }

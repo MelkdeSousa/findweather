@@ -13,28 +13,11 @@ import S from './styles'
 import DropMiniatureImg from '@assets/drop-miniature.png'
 import RainingCloudMiniatureImg from '@assets/raining-cloud-miniature.png'
 import WindMiniatureImg from '@assets/wind-miniature.png'
-import { View } from 'react-native'
-
-const weatherData = [
-  {
-    id: '1',
-    text: 'Umidade',
-    icon: DropMiniatureImg,
-    value: '24%',
-  },
-  {
-    id: '2',
-    text: 'Veloc. Vento',
-    icon: WindMiniatureImg,
-    value: '10 km/h',
-  },
-  {
-    id: '3',
-    text: 'Chuva',
-    icon: RainingCloudMiniatureImg,
-    value: '76%',
-  },
-]
+import { CurrentWeather } from '@hooks/useWeather'
+import { MainStackNavigationProps } from '@routes/main.stack'
+import { forecastConditionsIcons } from '@utils/forecastIcon'
+import formatDate from '@utils/formatDate'
+import { Image, View } from 'react-native'
 
 const forecastData = [
   {
@@ -63,7 +46,12 @@ const forecastData = [
   },
 ]
 
-const LocationWeather = () => {
+export type LocationWeatherProps = {
+  currentWeather: CurrentWeather
+  navigation: MainStackNavigationProps
+}
+
+const LocationWeather = ({ currentWeather }: LocationWeatherProps) => {
   const { fontSizes, colors } = useTheme()
 
   return (
@@ -76,8 +64,9 @@ const LocationWeather = () => {
             fontFamily: '$overpassRegular',
           }}
         >
-          <Icon name="enviromento" size={fontSizes.sm} color={colors.white} />A
-          Corunã, Espanha
+          <Icon name="enviromento" size={fontSizes.sm} color={colors.white} />
+          {currentWeather.city}, {currentWeather.region},{' '}
+          {currentWeather.country}
         </Text>
         <Text
           css={{
@@ -86,13 +75,23 @@ const LocationWeather = () => {
             fontFamily: '$overpassRegular',
           }}
         >
-          Domingo, 12 de Abril de 2020
+          {formatDate()}
         </Text>
       </S.Header>
 
-      <Divider bottom={64} />
+      <Divider bottom={24} />
 
       <S.Body>
+        <S.Image>
+          <Image
+            style={{
+              width: 170,
+              height: '100%',
+            }}
+            source={forecastConditionsIcons(currentWeather.description)}
+          />
+        </S.Image>
+
         <Text
           css={{
             color: '$white',
@@ -100,7 +99,7 @@ const LocationWeather = () => {
             fontFamily: '$overpassBold',
           }}
         >
-          23°
+          {Math.round(currentWeather.temperature)}°
         </Text>
         <Text
           css={{
@@ -109,14 +108,35 @@ const LocationWeather = () => {
             fontFamily: '$overpassRegular',
           }}
         >
-          Chuva Moderada
+          {currentWeather.description}
         </Text>
 
-        <Divider bottom={64} />
+        <Divider bottom={24} />
 
-        <Weather data={weatherData} />
+        <Weather
+          data={[
+            {
+              id: '1',
+              text: 'Umidade',
+              icon: DropMiniatureImg,
+              value: currentWeather.humidity + '%',
+            },
+            {
+              id: '2',
+              text: 'Veloc. Vento',
+              icon: WindMiniatureImg,
+              value: `${Math.floor(currentWeather.wind)}km/h`,
+            },
+            {
+              id: '3',
+              text: 'Chuva',
+              icon: RainingCloudMiniatureImg,
+              value: `${Math.floor(currentWeather.dailyWillItRain)}%`,
+            },
+          ]}
+        />
 
-        <Divider bottom={64} />
+        <Divider bottom={24} />
 
         <View
           style={{
@@ -148,7 +168,7 @@ const LocationWeather = () => {
           </Button>
         </View>
 
-        <Divider bottom={64} />
+        <Divider bottom={24} />
 
         <ForecastList data={forecastData} />
       </S.Body>
