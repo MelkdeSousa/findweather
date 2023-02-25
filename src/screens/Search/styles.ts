@@ -57,7 +57,7 @@ const ErrorContainer = styled('View', {
   flex: 1,
 })
 
-const ResultsContainer = styled('View', {
+const ResultsContainer = styled('TouchableOpacity', {
   flex: 1,
   flexWrap: 'wrap',
   flexDirection: 'row',

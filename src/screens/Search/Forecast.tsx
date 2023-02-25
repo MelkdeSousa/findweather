@@ -1,18 +1,19 @@
 import { Text } from '@components/Text'
 import { Forecast as ForecastType } from '@types/forecast'
 import React from 'react'
-import { Image } from 'react-native'
+import { Image, TouchableOpacityProps } from 'react-native'
 import S from './styles'
 
-export type ForecastProps = {
+export type ForecastProps = TouchableOpacityProps & {
   forecast: ForecastType
 }
 
 const Forecast = ({
   forecast: { city, temperature, condition, icon, region, country },
+  ...props
 }: ForecastProps) => {
   return (
-    <S.ResultsContainer>
+    <S.ResultsContainer {...props}>
       <S.ForecastContainer>
         <S.ForecastHeader>
           <Text

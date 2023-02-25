@@ -16,11 +16,16 @@ export type SearchScreenProps = {
 
 const SearchScreen = ({ navigation }: SearchScreenProps) => {
   const theme = useTheme()
-  const { forecast, getForecast, loading, notFound } = useForecast()
+  const { forecast, getForecast, loading, notFound, saveLocal } = useForecast()
 
   const [city, setCity] = useState('')
 
   const navigateToHome = () => navigation.navigate('Home')
+
+  const onSaved = async () => {
+    await saveLocal()
+    navigation.navigate('Home')
+  }
 
   return (
     <ContainerScreen
@@ -64,7 +69,7 @@ const SearchScreen = ({ navigation }: SearchScreenProps) => {
       ) : notFound ? (
         <NotFoundDestination />
       ) : forecast ? (
-        <Forecast forecast={forecast} />
+        <Forecast forecast={forecast} onPress={onSaved} />
       ) : null}
     </ContainerScreen>
   )
