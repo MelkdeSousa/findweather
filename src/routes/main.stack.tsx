@@ -1,3 +1,4 @@
+import { WeatherProvider } from '@contexts/weather'
 import { NavigationProp } from '@react-navigation/native'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import WelcomeScreen from '@screens/Welcome'
@@ -14,14 +15,16 @@ const Stack = createNativeStackNavigator<MainStackParamList>()
 
 const MainStack = () => {
   return (
-    <Stack.Navigator
-      screenOptions={{
-        headerShown: false,
-      }}
-    >
-      <Stack.Screen name="Welcome" component={WelcomeScreen} />
-      <Stack.Screen name="Tab" component={MainTab} />
-    </Stack.Navigator>
+    <WeatherProvider>
+      <Stack.Navigator
+        screenOptions={{
+          headerShown: false,
+        }}
+      >
+        <Stack.Screen name="Welcome" component={WelcomeScreen} />
+        <Stack.Screen name="Tab" component={MainTab} />
+      </Stack.Navigator>
+    </WeatherProvider>
   )
 }
 

@@ -4,7 +4,7 @@ import S from './styles'
 import { MainStackNavigationProps } from '@routes/main.stack'
 
 import ClimateChangeImg from '@assets/climate-change.png'
-import { Button, ContainerScreen, Divider, Text } from '@components'
+import { Button, Divider, Text } from '@components'
 
 export type EmptyHomeProps = {
   navigation: MainStackNavigationProps
@@ -15,7 +15,7 @@ const EmptyHome = ({ navigation }: EmptyHomeProps) => {
     navigation.navigate('Tab', { screen: 'Search' })
 
   return (
-    <ContainerScreen>
+    <>
       <Text
         css={{
           fontFamily: '$overpassRegular',
@@ -53,10 +53,10 @@ const EmptyHome = ({ navigation }: EmptyHomeProps) => {
             textDecorationColor: '$gray100',
           }}
         >
-          Selecione aqui um local e encontre o{'\n'}clima em tempo real
+          Selecione aqui um local e encontre{'\n'}o clima em tempo real
         </Text>
       </Button>
-    </ContainerScreen>
+    </>
   )
 }
 

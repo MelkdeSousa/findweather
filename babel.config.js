@@ -20,6 +20,7 @@ module.exports = function (api) {
             '@config': './src/config',
             '@mappers': './src/mappers',
             '@types': './src/@types',
+            '@contexts': './src/contexts',
           },
           extensions: ['.js', '.jsx', '.ts', '.tsx'],
         },

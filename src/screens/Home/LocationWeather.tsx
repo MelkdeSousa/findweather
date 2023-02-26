@@ -1,11 +1,4 @@
-import {
-  Button,
-  ContainerScreen,
-  Divider,
-  ForecastList,
-  Text,
-  Weather,
-} from '@components'
+import { Button, Divider, ForecastList, Text, Weather } from '@components'
 import { AntDesign as Icon } from '@expo/vector-icons'
 import { useTheme } from '@styles'
 import S from './styles'
@@ -13,49 +6,32 @@ import S from './styles'
 import DropMiniatureImg from '@assets/drop-miniature.png'
 import RainingCloudMiniatureImg from '@assets/raining-cloud-miniature.png'
 import WindMiniatureImg from '@assets/wind-miniature.png'
-import { CurrentWeather } from '@hooks/useWeather'
 import { MainStackNavigationProps } from '@routes/main.stack'
 import { forecastConditionsIcons } from '@utils/forecastIcon'
 import formatDate from '@utils/formatDate'
 import { Image, View } from 'react-native'
 
-const forecastData = [
-  {
-    id: '1',
-    hour: '12:00',
-    icon: 'https://cdn.weatherapi.com/weather/64x64/day/176.png',
-    temperature: '23°',
-  },
-  {
-    id: '2',
-    hour: '12:00',
-    icon: 'https://cdn.weatherapi.com/weather/64x64/day/176.png',
-    temperature: '23°',
-  },
-  {
-    id: '3',
-    hour: '12:00',
-    icon: 'https://cdn.weatherapi.com/weather/64x64/day/176.png',
-    temperature: '23°',
-  },
-  {
-    id: '4',
-    hour: '12:00',
-    icon: 'https://cdn.weatherapi.com/weather/64x64/day/176.png',
-    temperature: '23°',
-  },
-]
-
-export type LocationWeatherProps = {
-  currentWeather: CurrentWeather
-  navigation: MainStackNavigationProps
+export type HourForecast = {
+  id: string
+  hour: string
+  icon: string
+  temperature: number
 }
 
-const LocationWeather = ({ currentWeather }: LocationWeatherProps) => {
+export type LocationWeatherProps = {
+  navigation: MainStackNavigationProps
+  currentWeather: Weather
+  hoursForecast: HourForecast[]
+}
+
+const LocationWeather = ({
+  currentWeather,
+  hoursForecast,
+}: LocationWeatherProps) => {
   const { fontSizes, colors } = useTheme()
 
   return (
-    <ContainerScreen>
+    <>
       <S.Header>
         <Text
           css={{
@@ -170,9 +146,9 @@ const LocationWeather = ({ currentWeather }: LocationWeatherProps) => {
 
         <Divider bottom={24} />
 
-        <ForecastList data={forecastData} />
+        <ForecastList data={hoursForecast} />
       </S.Body>
-    </ContainerScreen>
+    </>
   )
 }
 

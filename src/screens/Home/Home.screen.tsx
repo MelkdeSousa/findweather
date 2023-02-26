@@ -1,5 +1,7 @@
-import { useWeather } from '@hooks'
+import { ContainerScreen } from '@components'
+import { useWeather } from '@contexts/weather'
 import { MainStackNavigationProps } from '@routes/main.stack'
+import { useEffect } from 'react'
 import { ActivityIndicator } from 'react-native'
 import EmptyHome from './Empty'
 import LocationWeather from './LocationWeather'
@@ -9,14 +11,32 @@ export type HomeScreenProps = {
 }
 
 const HomeScreen = ({ navigation }: HomeScreenProps) => {
-  const { currentWeather, loading, hasLocation } = useWeather()
+  const {
+    currentWeather,
+    loading,
+    hasLocation,
+    hasCurrentWeather,
+    getCurrentWeather,
+  } = useWeather()
 
-  return loading ? (
-    <ActivityIndicator />
-  ) : hasLocation ? (
-    <LocationWeather navigation={navigation} currentWeather={currentWeather} />
-  ) : (
-    <EmptyHome navigation={navigation} />
+  useEffect(() => {
+    getCurrentWeather()
+  }, [getCurrentWeather])
+
+  return (
+    <ContainerScreen>
+      {loading ? (
+        <ActivityIndicator />
+      ) : hasLocation && hasCurrentWeather ? (
+        <LocationWeather
+          navigation={navigation}
+          currentWeather={currentWeather}
+          hoursForecast={currentWeather.hoursForecast}
+        />
+      ) : (
+        <EmptyHome navigation={navigation} />
+      )}
+    </ContainerScreen>
   )
 }
 

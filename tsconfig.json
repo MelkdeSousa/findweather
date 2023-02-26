@@ -65,6 +65,12 @@
       "@types": [
         "src/@types/index.d.ts"
       ],
+      "@contexts/*": [
+        "src/contexts/*"
+      ],
+      "@contexts": [
+        "src/contexts/index.ts"
+      ],
     },
     "typeRoots": [
       "node_modules/@types",

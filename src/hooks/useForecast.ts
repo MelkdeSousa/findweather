@@ -1,4 +1,5 @@
 import { CITY_TOKEN, COUNTRY_TOKEN } from '@config/tokens'
+import { useWeather } from '@contexts/weather'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import * as opencageApi from '@services/opencageApi'
 import * as weatherApi from '@services/weatherApi'
@@ -6,6 +7,8 @@ import { Forecast } from '@types/forecast'
 import { useState } from 'react'
 
 const useForecast = () => {
+  const { getLocationDataFromAsyncStorage } = useWeather()
+
   const [forecast, setForecast] = useState<Forecast | undefined>(undefined)
   const [notFound, setNotFound] = useState<boolean | undefined>(undefined)
   const [loading, setLoading] = useState(false)
@@ -32,6 +35,8 @@ const useForecast = () => {
 
       await AsyncStorage.setItem(COUNTRY_TOKEN, code)
       await AsyncStorage.setItem(CITY_TOKEN, forecast.city)
+
+      await getLocationDataFromAsyncStorage()
     } catch (error) {
       console.log(error)
     }
