@@ -1,4 +1,4 @@
-package com.findweather.newarchitecture;
+package com.FindWeather.newarchitecture;
 
 import android.app.Application;
 import androidx.annotation.NonNull;
@@ -20,9 +20,9 @@ import com.facebook.react.fabric.EmptyReactNativeConfig;
 import com.facebook.react.fabric.FabricJSIModuleProvider;
 import com.facebook.react.fabric.ReactNativeConfig;
 import com.facebook.react.uimanager.ViewManagerRegistry;
-import com.findweather.BuildConfig;
-import com.findweather.newarchitecture.components.MainComponentsRegistry;
-import com.findweather.newarchitecture.modules.MainApplicationTurboModuleManagerDelegate;
+import com.FindWeather.BuildConfig;
+import com.FindWeather.newarchitecture.components.MainComponentsRegistry;
+import com.FindWeather.newarchitecture.modules.MainApplicationTurboModuleManagerDelegate;
 import java.util.ArrayList;
 import java.util.List;
 

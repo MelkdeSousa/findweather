@@ -1,4 +1,4 @@
-package com.findweather;
+package com.FindWeather;
 
 import android.os.Build;
 import android.os.Bundle;
