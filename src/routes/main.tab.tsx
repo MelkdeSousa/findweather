@@ -1,6 +1,3 @@
-import HomeScreen from '@screens/Home'
-import SearchScreen from '@screens/Search'
-
 import { AntDesign as Icon } from '@expo/vector-icons'
 
 import {
@@ -8,10 +5,12 @@ import {
   createBottomTabNavigator,
 } from '@react-navigation/bottom-tabs'
 import { NavigatorScreenParams } from '@react-navigation/native'
+import { SearchScreen } from '@screens'
 import { useTheme } from '@styles'
+import ForecastStack, { ForecastStackScreenParams } from './forecast.stack'
 
 export type MainTabParamList = {
-  Home: undefined
+  Forecast: ForecastStackScreenParams
   Search: undefined
 }
 
@@ -37,9 +36,10 @@ const MainTab = () => {
       }}
     >
       <Tab.Screen
-        name="Home"
-        component={HomeScreen}
+        name="Forecast"
+        component={ForecastStack}
         options={{
+          title: 'Home',
           tabBarIcon: ({ color, size }) => (
             <Icon name="home" size={size} color={color} />
           ),

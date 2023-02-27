@@ -1,7 +1,7 @@
 import { Text } from '@components/Text'
 import { AntDesign as Icon } from '@expo/vector-icons'
 import { useTheme } from '@styles'
-import { Platform, View } from 'react-native'
+import { View } from 'react-native'
 import { Divider } from '../Divider'
 import S from './styles'
 
@@ -19,18 +19,13 @@ const Header = ({ title, onBack }: HeaderProps) => {
         <Icon name="left" size={20} color={theme.colors.white} />
       </S.BackButton>
 
-      <View
-        style={{
-          alignItems: Platform.OS === 'android' ? 'center' : 'stretch',
-          flexDirection: 'row',
-          marginHorizontal: '30%',
-        }}
-      >
+      <View>
         <Text
           css={{
             fontFamily: '$overpassRegular',
             fontSize: '$md',
             color: '$white',
+            textAlign: 'center',
           }}
         >
           {title}

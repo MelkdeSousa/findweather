@@ -1,16 +1,10 @@
+import { HourForecast } from '@screens/Home/LocationWeather'
 import React from 'react'
 import { Text } from '../Text'
 import S from './styles'
 
-export type ForecastCardItem = {
-  id: string
-  temperature: string
-  icon: string
-  hour: string
-}
-
 export type ForecastCardProps = {
-  item: ForecastCardItem
+  item: HourForecast
 }
 
 const ForecastCard = ({ item }: ForecastCardProps) => (
@@ -22,7 +16,7 @@ const ForecastCard = ({ item }: ForecastCardProps) => (
         fontFamily: '$overpassRegular',
       }}
     >
-      {item.temperature}
+      {Math.floor(item.temperature)}°
     </Text>
     <S.Icon source={{ uri: item.icon }} />
     <Text

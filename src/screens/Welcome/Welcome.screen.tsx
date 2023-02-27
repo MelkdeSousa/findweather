@@ -12,7 +12,10 @@ export type WelcomeScreenProps = {
 const WelcomeScreen = ({ navigation }: WelcomeScreenProps) => {
   const navigateToHome = () =>
     navigation.navigate('Tab', {
-      screen: 'Home',
+      screen: 'Forecast',
+      params: {
+        screen: 'Home',
+      },
     })
 
   return (

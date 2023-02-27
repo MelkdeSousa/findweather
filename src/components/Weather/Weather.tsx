@@ -1,3 +1,4 @@
+import { Fragment } from 'react'
 import { Image, ImageSourcePropType } from 'react-native'
 import { Text } from '../Text'
 import S from './styles'
@@ -15,8 +16,8 @@ const Weather = ({ data }: WeatherProps) => {
   return (
     <S.Container>
       {data.map((item, index) => (
-        <>
-          <S.WeatherItem key={item.id}>
+        <Fragment key={item.id}>
+          <S.WeatherItem>
             <Image source={item.icon} />
 
             <Text
@@ -41,7 +42,7 @@ const Weather = ({ data }: WeatherProps) => {
           </S.WeatherItem>
 
           {index !== data.length - 1 && <S.VerticalDivider />}
-        </>
+        </Fragment>
       ))}
     </S.Container>
   )

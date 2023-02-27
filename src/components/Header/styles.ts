@@ -3,6 +3,7 @@ import { styled } from '@styles'
 const Container = styled('View', {
   flexDirection: 'row',
   alignItems: 'center',
+  justifyContent: 'space-between',
   width: '100%',
 })
 

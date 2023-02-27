@@ -1,7 +1,7 @@
 import { WeatherProvider } from '@contexts/weather'
 import { NavigationProp } from '@react-navigation/native'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
-import WelcomeScreen from '@screens/Welcome'
+import { WelcomeScreen } from '@screens'
 import MainTab, { MainTabScreenParams } from './main.tab'
 
 export type MainStackParamList = {

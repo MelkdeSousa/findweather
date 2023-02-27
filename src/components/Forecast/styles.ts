@@ -10,6 +10,7 @@ const Container = styled('View', {
   borderColor: '$gray300',
   borderWidth: 1,
   elevation: 2,
+  marginRight: '$sm',
 })
 
 const Icon = styled('Image', {

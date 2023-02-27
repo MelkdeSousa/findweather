@@ -6,6 +6,7 @@ import S from './styles'
 import DropMiniatureImg from '@assets/drop-miniature.png'
 import RainingCloudMiniatureImg from '@assets/raining-cloud-miniature.png'
 import WindMiniatureImg from '@assets/wind-miniature.png'
+import { Weather as WeatherType } from '@contexts/weather'
 import { MainStackNavigationProps } from '@routes/main.stack'
 import { forecastConditionsIcons } from '@utils/forecastIcon'
 import formatDate from '@utils/formatDate'
@@ -20,15 +21,24 @@ export type HourForecast = {
 
 export type LocationWeatherProps = {
   navigation: MainStackNavigationProps
-  currentWeather: Weather
+  currentWeather: WeatherType
   hoursForecast: HourForecast[]
 }
 
 const LocationWeather = ({
   currentWeather,
   hoursForecast,
+  navigation,
 }: LocationWeatherProps) => {
   const { fontSizes, colors } = useTheme()
+
+  const navigateToNext5Days = () =>
+    navigation.navigate('Tab', {
+      screen: 'Forecast',
+      params: {
+        screen: 'Next5Days',
+      },
+    })
 
   return (
     <>
@@ -131,7 +141,7 @@ const LocationWeather = ({
             Hoje
           </Text>
 
-          <Button>
+          <Button onPress={navigateToNext5Days}>
             <Text
               css={{
                 color: '$gray100',

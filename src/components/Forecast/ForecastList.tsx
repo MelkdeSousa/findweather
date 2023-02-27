@@ -1,9 +1,10 @@
+import { HourForecast } from '@screens/Home/LocationWeather'
 import React from 'react'
 import { FlatList } from 'react-native'
-import ForecastCard, { ForecastCardItem } from './ForecastCard'
+import ForecastCard from './ForecastCard'
 
 export type ForecastProps = {
-  data: ForecastCardItem[]
+  data: HourForecast[]
 }
 
 const ForecastList = ({ data }: ForecastProps) => {
@@ -13,9 +14,9 @@ const ForecastList = ({ data }: ForecastProps) => {
       keyExtractor={(item) => item.id}
       horizontal
       showsHorizontalScrollIndicator={false}
+      overScrollMode="never"
       contentContainerStyle={{
         justifyContent: 'space-between',
-        width: '100%',
       }}
       renderItem={({ item }) => <ForecastCard item={item} />}
     />

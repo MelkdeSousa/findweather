@@ -20,11 +20,12 @@ const SearchScreen = ({ navigation }: SearchScreenProps) => {
 
   const [city, setCity] = useState('')
 
-  const navigateToHome = () => navigation.navigate('Home')
+  const navigateToHome = () =>
+    navigation.navigate('Forecast', { screen: 'Home' })
 
   const onSaved = async () => {
     await saveLocal()
-    navigation.navigate('Home')
+    navigation.navigate('Forecast', { screen: 'Home' })
   }
 
   return (
