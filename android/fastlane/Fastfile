@@ -16,29 +16,34 @@
 default_platform(:android)
 
 platform :android do
-  desc "Runs all the tests"
-  lane :test do
-    gradle(task: "test")
+  package = read_json(json_path: "../package.json")
+  version = package[:version]
+
+  private_lane :versioning do
+
+    increment_version_code(
+        gradle_file_path: "./app/build.gradle",
+    )
+
+    increment_version_name(
+        gradle_file_path: "./app/build.gradle",
+        version_name: version
+    )
   end
 
-  desc "Submit a new Beta Build to Crashlytics Beta"
-  lane :beta do
-    gradle(task: "clean assembleRelease")
-    crashlytics
-  
-    # sh "your_script.sh"
-    # You can also use other beta testing services here
-  end
-
-  desc "Deploy a new version to the Google Play"
-  lane :deploy do
-    gradle(task: "clean assembleRelease")
-    upload_to_play_store
+  private_lane :notify_discord do
+    discord_notifier(
+      webhook_url:"https://discord.com/api/webhooks/1079821051409731705/-zyGIJyiy9qTBt-wNqW3XqBuUsnChPSAr2fACibwooUQf15a6mvsund6zDt395Fu3jGZ",
+      title: "Nova versão",
+      description: "Build da versão #{version} criada com sucesso!",
+      success: true
+    )
   end
 
   desc "Build a new version of the app"
   lane :build do
     gradle(task: "clean assembleRelease")
+    notify_discord
   end
 end
 

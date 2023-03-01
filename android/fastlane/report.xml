@@ -5,12 +5,27 @@
     
     
       
-      <testcase classname="fastlane.lanes" name="0: default_platform" time="0.000334839">
+      <testcase classname="fastlane.lanes" name="0: default_platform" time="0.000425612">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="1: clean assembleRelease" time="624.373336342">
+      <testcase classname="fastlane.lanes" name="1: read_json" time="0.000594574">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="2: clean assembleRelease" time="1239.284662594">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="3: Switch to android notify_discord lane" time="0.000558782">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="4: discord_notifier" time="1.879211139">
         
       </testcase>
     
