@@ -5,18 +5,18 @@ import DropMiniatureImg from '@assets/drop-miniature.png'
 import RainingCloudMiniatureImg from '@assets/raining-cloud-miniature.png'
 import WindMiniatureImg from '@assets/wind-miniature.png'
 
-import { useWeather } from '@contexts/weather'
+import { useWeather } from '@hooks'
 import { forecastConditionsIcons } from '@utils/forecastIcon'
 import S from './styles'
 
-export type Next5DaysScreenProps = {
+export type NextDaysScreenProps = {
   navigation: MainStackNavigationProps
 }
 
-const Next5DaysScreen = ({ navigation }: Next5DaysScreenProps) => {
+const NextDaysScreen = ({ navigation }: NextDaysScreenProps) => {
   const { currentWeather } = useWeather()
 
-  const [tomorrow] = currentWeather.next5DaysForecast
+  const [tomorrow] = currentWeather.nextDaysForecast
 
   const navigateToHome = () =>
     navigation.navigate('Tab', {
@@ -35,7 +35,10 @@ const Next5DaysScreen = ({ navigation }: Next5DaysScreenProps) => {
     >
       <S.TomorrowForecastBanner>
         <S.BannerForecast>
-          <S.Header title="Próximos 5 dias" onBack={navigateToHome} />
+          <S.Header
+            title={`Próximos ${currentWeather.nextDays} dias`}
+            onBack={navigateToHome}
+          />
           <S.DetailContainer>
             <S.Image source={forecastConditionsIcons(tomorrow.weather)} />
             <S.Description>
@@ -115,9 +118,9 @@ const Next5DaysScreen = ({ navigation }: Next5DaysScreenProps) => {
         </S.BannerForecast>
       </S.TomorrowForecastBanner>
 
-      <S.Next5DaysForecast
+      <S.NextDaysForecast
         keyExtractor={(item) => item.id}
-        data={currentWeather.next5DaysForecast}
+        data={currentWeather.nextDaysForecast}
         renderItem={({ item }) => (
           <S.ForecastItem>
             <S.Section>
@@ -147,4 +150,4 @@ const Next5DaysScreen = ({ navigation }: Next5DaysScreenProps) => {
   )
 }
 
-export default Next5DaysScreen
+export default NextDaysScreen

@@ -45,7 +45,7 @@ const Image = styled('Image', {
   height: 120,
 })
 
-const Next5DaysForecast = styled('FlatList', {
+const NextDaysForecast = styled('FlatList', {
   width: '100%',
   paddingHorizontal: '$lg',
   marginTop: '$lg',
@@ -88,7 +88,7 @@ export default {
   Image,
   Header,
   TomorrowForecastBanner,
-  Next5DaysForecast,
+  NextDaysForecast,
   ForecastItem,
   GrayText,
   Icon,
