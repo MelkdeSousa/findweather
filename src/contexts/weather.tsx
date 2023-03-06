@@ -7,7 +7,6 @@ import {
   createContext,
   ReactNode,
   useCallback,
-  useContext,
   useEffect,
   useMemo,
   useState,
@@ -35,7 +34,8 @@ export type Weather = {
   wind: number
   dailyWillItRain: number
   hoursForecast: HourForecast[]
-  next5DaysForecast: DayForecast[]
+  nextDaysForecast: DayForecast[]
+  nextDays: number
 }
 
 export type WeatherContextType = {
@@ -47,7 +47,7 @@ export type WeatherContextType = {
   getCurrentWeather: () => Promise<void>
 }
 
-const WeatherContext = createContext<WeatherContextType>(
+export const WeatherContext = createContext<WeatherContextType>(
   {} as WeatherContextType,
 )
 
@@ -55,7 +55,7 @@ export type WeatherProviderProps = {
   children: ReactNode
 }
 
-const WeatherProvider = ({ children }: WeatherProviderProps) => {
+export const WeatherProvider = ({ children }: WeatherProviderProps) => {
   const [location, setLocation] = useState({
     city: '',
     country: '',
@@ -72,7 +72,8 @@ const WeatherProvider = ({ children }: WeatherProviderProps) => {
     wind: 0,
     dailyWillItRain: 0,
     hoursForecast: [],
-    next5DaysForecast: [],
+    nextDaysForecast: [],
+    nextDays: 0,
   })
 
   const hasCurrentWeather = Boolean(
@@ -106,7 +107,7 @@ const WeatherProvider = ({ children }: WeatherProviderProps) => {
 
     const [, , ...forecasts] = response.forecast.forecastday
 
-    const next5DaysForecast: DayForecast[] = forecasts.map((forecast) => ({
+    const nextDaysForecast: DayForecast[] = forecasts.map((forecast) => ({
       id: forecast.date_epoch.toString(),
       date: formatDateString(forecast.date),
       icon: 'https:' + forecast.day.condition.icon,
@@ -139,7 +140,8 @@ const WeatherProvider = ({ children }: WeatherProviderProps) => {
       dailyWillItRain:
         response.forecast.forecastday[0].day.daily_chance_of_rain,
       hoursForecast,
-      next5DaysForecast,
+      nextDaysForecast,
+      nextDays: nextDaysForecast.length,
     })
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -172,14 +174,3 @@ const WeatherProvider = ({ children }: WeatherProviderProps) => {
     <WeatherContext.Provider value={value}>{children}</WeatherContext.Provider>
   )
 }
-
-const useWeather = () => {
-  const context = useContext(WeatherContext)
-
-  if (context === undefined) {
-    throw new Error('useWeather must be used within a WeatherProvider')
-  }
-  return context
-}
-
-export { WeatherContext, WeatherProvider, useWeather }

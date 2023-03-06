@@ -1,10 +1,10 @@
 import { CITY_TOKEN, COUNTRY_TOKEN } from '@config/tokens'
-import { useWeather } from '@contexts/weather'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import * as opencageApi from '@services/opencageApi'
 import * as weatherApi from '@services/weatherApi'
 import { Forecast } from '@types/forecast'
 import { useState } from 'react'
+import useWeather from './useWeather'
 
 const useForecast = () => {
   const { getLocationDataFromAsyncStorage } = useWeather()
