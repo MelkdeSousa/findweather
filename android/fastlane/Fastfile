@@ -30,10 +30,10 @@ platform :android do
         version_name: version
     )
   end
-
+  
   private_lane :notify_discord do
     discord_notifier(
-      webhook_url:"https://discord.com/api/webhooks/1079821051409731705/-zyGIJyiy9qTBt-wNqW3XqBuUsnChPSAr2fACibwooUQf15a6mvsund6zDt395Fu3jGZ",
+      webhook_url:"",
       title: "Nova versão",
       description: "Build da versão #{version} criada com sucesso!",
       success: true
