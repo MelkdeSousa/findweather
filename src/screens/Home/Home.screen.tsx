@@ -1,5 +1,5 @@
 import { ContainerScreen } from '@components'
-import { useWeather } from '@contexts/weather'
+import { useWeather } from '@hooks'
 import { MainStackNavigationProps } from '@routes/main.stack'
 import { useEffect } from 'react'
 import { ActivityIndicator } from 'react-native'

@@ -149,7 +149,7 @@ const LocationWeather = ({
                 fontFamily: '$overpassRegular',
               }}
             >
-              Próximos 5 dias <Icon name="right" />
+              Próximos {currentWeather.nextDays} dias <Icon name="right" />
             </Text>
           </Button>
         </View>
