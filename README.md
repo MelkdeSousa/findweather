@@ -1,13 +1,14 @@
-<div style="width: 100%;flex: 1;display: flex;justify-content: center;align-items: center;flex-direction: column">
-    <h1>Find<strong>Weather</strong></h1>
-    <img style="width: 12rem" src="./assets/icon.png" alt="logo do findweather">
-</div>
+<p align="center">
+    <h1 align="center">Find<strong>Weather</strong></h1>
+    <p align="center">
+    <img style="align: center; width: 12rem" src="./assets/icon.png" alt="logo do findweather">
+    </p>
+</p>
 
 ## Resumo
-- [Resumo](#resumo)
-- [⛈️ Sobre o projeto](#️-sobre-o-projeto)
-- [🔧 Tecnologias](#-tecnologias)
-- [📷 Imagens](#-imagens)
+- [⛈️ Sobre o projeto](#️⛈️-sobre-o-projeto)
+- [🔧 Tecnologias](#🔧-tecnologias)
+- [📷 Imagens](#📷-imagens)
 
 
 ## ⛈️ Sobre o projeto
