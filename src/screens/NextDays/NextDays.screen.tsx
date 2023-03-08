@@ -18,6 +18,11 @@ const NextDaysScreen = ({ navigation }: NextDaysScreenProps) => {
 
   const [tomorrow] = currentWeather.nextDaysForecast
 
+  const headerText =
+    currentWeather.nextDays > 1
+      ? `Próximos ${currentWeather.nextDays} dias`
+      : `Próximo dia`
+
   const navigateToHome = () =>
     navigation.navigate('Tab', {
       screen: 'Forecast',
@@ -35,10 +40,7 @@ const NextDaysScreen = ({ navigation }: NextDaysScreenProps) => {
     >
       <S.TomorrowForecastBanner>
         <S.BannerForecast>
-          <S.Header
-            title={`Próximos ${currentWeather.nextDays} dias`}
-            onBack={navigateToHome}
-          />
+          <S.Header title={headerText} onBack={navigateToHome} />
           <S.DetailContainer>
             <S.Image source={forecastConditionsIcons(tomorrow.weather)} />
             <S.Description>

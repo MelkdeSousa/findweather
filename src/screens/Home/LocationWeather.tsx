@@ -32,6 +32,11 @@ const LocationWeather = ({
 }: LocationWeatherProps) => {
   const { fontSizes, colors } = useTheme()
 
+  const nextDaysText =
+    currentWeather.nextDays > 1
+      ? `Próximos ${currentWeather.nextDays} dias`
+      : `Próximo dia`
+
   const navigateToNext5Days = () =>
     navigation.navigate('Tab', {
       screen: 'Forecast',
@@ -149,7 +154,7 @@ const LocationWeather = ({
                 fontFamily: '$overpassRegular',
               }}
             >
-              Próximos {currentWeather.nextDays} dias <Icon name="right" />
+              {nextDaysText} <Icon name="right" />
             </Text>
           </Button>
         </View>
